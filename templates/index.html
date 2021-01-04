@@ -1,0 +1,46 @@
+{% load static %}
+<!doctype html>
+
+<html lang="fr">
+
+
+{% include "head.html" %}
+{% include "header.html" %}
+
+<body>
+    <!--projet debut-->
+
+    <main>
+        <!--acceder context de function Image dans views et le retourner-->
+       <!-- {{ images }}-->
+        <div class="container-fluid mt-5 pt-5">
+            {% include "mon_job.html" %}
+        </div>
+
+    <!--projet fin-->
+
+
+<div class="container">
+
+    {% include "apropos.html" %}
+    <hr class="between-section">
+    {% include "contact.html" %}
+</div>
+
+</main>
+{% include "footer.html" %}
+    <div class="dotted-scrollspy clearfix d-none d-sm-block">
+    <ul class="nav smooth-scroll flex-column">
+      <li class="nav-item"><a class="nav-link" href="#mon_job"><span></span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#apropos"><span></span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#contact"><span></span></a></li>
+    </ul>
+  </div>
+
+
+
+
+    {% include "scripts.html" %}
+</body>
+
+</html>
