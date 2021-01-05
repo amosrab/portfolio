@@ -29,7 +29,7 @@ SECRET_KEY = '($5^b4r_m&aj7nsm5-@687sr9y1b2g+h7uf@76vp87ov)rhreh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 # DEBUG = True
-ALLOWED_HOSTS = ['127.0.0.1', 'checkierphoto.herokuapp.com']
+ALLOWED_HOSTS = ['checkierphoto.herokuapp.com', '127.0.0.1']
 # ALLOWED_HOSTS[]
 # Application definition
 
