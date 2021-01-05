@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 # ajouter
+import django_generate_secret_key
 import django_heroku
 
 
@@ -19,13 +20,25 @@ import django_heroku
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # ajouter
-django_heroku.settings(locals())
+#django_heroku.settings(locals())
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '($5^b4r_m&aj7nsm5-@687sr9y1b2g+h7uf@76vp87ov)rhreh'
+#SECRET_KEY = with open('D:/python/portfolio/secretkey.txt') as f:
+#SECRET_KEY = f.read().strip()
 # ( $5^b4r_m&aj7nsm5-@687sr9y1b2g+h7uf@76vp87ov)rhreh
+###test
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
+# Use a separate file for the secret key
+with open(os.path.join(BASE_DIR, 'secretkey.txt')) as f:
+    SECRET_KEY = f.read().strip()
+####
+
+
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 # DEBUG = True
@@ -41,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'my_app_portfolio',
+    'django_generate_secret_key',  # test
 ]
 
 MIDDLEWARE = [
@@ -101,6 +115,38 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
+# SECURITY WARNING: don't run with debug turned on in production!
+if django_heroku.os.environ.get('ENV') == 'PRODUCTION':
+    DEBUG = False
+else:
+    DEBUG = True
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
