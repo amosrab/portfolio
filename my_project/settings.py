@@ -56,7 +56,7 @@ if os.environ.get('ENV') == 'PRODUCTION':
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 # DEBUG = True
-ALLOWED_HOSTS = ['checkierphoto.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['hhphotography.herokuapp.com', '127.0.0.1']
 # ALLOWED_HOSTS[]
 # Application definition
 
