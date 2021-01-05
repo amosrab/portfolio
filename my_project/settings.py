@@ -19,18 +19,18 @@ import django_heroku
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # ajouter
-#django_heroku.settings(locals())
+django_heroku.settings(locals())
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '($5^b4r_m&aj7nsm5-@687sr9y1b2g+h7uf@76vp87ov)rhreh'
-#($5^b4r_m&aj7nsm5-@687sr9y1b2g+h7uf@76vp87ov)rhreh
+# ( $5^b4r_m&aj7nsm5-@687sr9y1b2g+h7uf@76vp87ov)rhreh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-#DEBUG = True
+# DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', 'checkierphoto.herokuapp.com']
-#ALLOWED_HOSTS[]
+# ALLOWED_HOSTS[]
 # Application definition
 
 INSTALLED_APPS = [
@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware', # ajouter
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # ajouter
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
