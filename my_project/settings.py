@@ -9,55 +9,31 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+import os
 from pathlib import Path
-# ajouter
-import django_generate_secret_key
-import django_heroku
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# ajouter
-#django_heroku.settings(locals())
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = with open('D:/python/portfolio/secretkey.txt') as f:
-#SECRET_KEY = f.read().strip()
-# ( $5^b4r_m&aj7nsm5-@687sr9y1b2g+h7uf@76vp87ov)rhreh
-###test
-import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
-# Use a separate file for the secret key
-with open(os.path.join(BASE_DIR, 'secretkey.txt')) as f:
-    SECRET_KEY = f.read().strip()
-
-if os.environ.get('ENV') == 'PRODUCTION':
-
-    # Static files settings
-    PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
-    STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-
-    # Extra places for collectstatic to find static files.
-    STATICFILES_DIRS = (
-        os.path.join(PROJECT_ROOT, 'static'),
-    )
-
-
-#######
-
-
-
+SECRET_KEY = '($5^b4r_m&aj7nsm5-@687sr9y1b2g+h7uf@76vp87ov)rhreh'
+#($5^b4r_m&aj7nsm5-@687sr9y1b2g+h7uf@76vp87ov)rhreh
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
 # DEBUG = True
-ALLOWED_HOSTS = ['hhphotography.herokuapp.com', '127.0.0.1']
-# ALLOWED_HOSTS[]
+
+####
+if os.environ.get('ENV') == 'PRODUCTION':
+    DEBUG = False
+else:
+    DEBUG = True
+
+
+#####
+ALLOWED_HOSTS = ["hhphotography.heroku.com"]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -68,12 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'my_app_portfolio',
-    'django_generate_secret_key',  # test
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # ajouter
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -130,38 +104,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# SECURITY WARNING: don't run with debug turned on in production!
-if django_heroku.os.environ.get('ENV') == 'PRODUCTION':
-    DEBUG = False
-else:
-    DEBUG = True
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -175,9 +117,25 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+####
+if os.environ.get('ENV') == 'PRODUCTION':
+
+    PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+    STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+    STATICFILES_DIRS = (os.path.join(PROJECT_ROOT, 'static')),
+
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+
+
+####
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-STATIC_ROOT = django_heroku.os.path.join(BASE_DIR, 'staticfiles')
+
 STATIC_URL = '/static/'
 
 # ajouter: pointer sur le dossier static
